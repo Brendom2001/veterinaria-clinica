@@ -11,6 +11,7 @@ import FAQ from './components/FAQ'
 import Testimonials from './components/Testimonials'
 import CTAFinal from './components/CTAFinal'
 import Footer from './components/Footer'
+import PawDivider from './components/PawDivider'
 
 export default function App() {
   return (
@@ -20,13 +21,16 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <PawDivider />
         <Services />
+        <PawDivider />
         <HowItWorks />
         <MarqueeSection />
         <Gallery />
         <Diferenciais />
         <FAQ />
         <Testimonials />
+        <PawDivider />
         <CTAFinal />
       </main>
       <Footer />

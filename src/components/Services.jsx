@@ -1,6 +1,64 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 
+// ── Weight slider price logic ─────────────────────────────────────────────────
+function getPrice(weight) {
+  if (weight <= 5) return 45
+  if (weight <= 10) return 65
+  if (weight <= 20) return 85
+  if (weight <= 35) return 110
+  return 140
+}
+
+function WeightSlider() {
+  const [weight, setWeight] = useState(10)
+  const price = getPrice(weight)
+  const fillPct = ((weight - 1) / 49) * 100
+
+  return (
+    <div className="mt-4 pt-4" style={{ borderTop: '1px solid #2A3D2F' }}>
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-dm text-xs text-[#8A9E8F]">Meu pet pesa:</span>
+        <span className="font-sora font-bold text-sm text-[#4CAF7D]">{weight} kg</span>
+      </div>
+
+      <input
+        type="range"
+        min={1}
+        max={50}
+        step={1}
+        value={weight}
+        onChange={(e) => setWeight(Number(e.target.value))}
+        className="weight-slider"
+        style={{
+          background: `linear-gradient(to right, #4CAF7D 0%, #4CAF7D ${fillPct}%, #2A3D2F ${fillPct}%, #2A3D2F 100%)`,
+        }}
+      />
+
+      <div className="mt-3 flex items-center gap-1.5">
+        <span className="font-dm text-xs text-[#8A9E8F]">Estimativa:</span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={price}
+            className="font-sora font-semibold text-sm text-[#4CAF7D]"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+          >
+            R$ {price.toFixed(2).replace('.', ',')}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+
+      <p className="mt-1.5 font-inter text-[#8A9E8F]/50" style={{ fontSize: 10 }}>
+        * Valor estimado. Confirme pelo WhatsApp.
+      </p>
+    </div>
+  )
+}
+
+// ── Services data ─────────────────────────────────────────────────────────────
 const services = [
   {
     icon: (
@@ -18,6 +76,7 @@ const services = [
     title: 'Banho & Tosa Premium',
     desc: 'Técnicas premium com produtos naturais, finalizações personalizadas e cuidado total com a pelagem do seu pet.',
     color: '#4CAF7D',
+    hasSlider: true,
   },
   {
     icon: (
@@ -64,6 +123,7 @@ const services = [
   },
 ]
 
+// ── ServiceCard ───────────────────────────────────────────────────────────────
 function ServiceCard({ service, index, inView }) {
   return (
     <motion.div
@@ -81,7 +141,6 @@ function ServiceCard({ service, index, inView }) {
         borderColor: `${service.color}66`,
       }}
     >
-      {/* Background glow on hover */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
         style={{
@@ -105,21 +164,26 @@ function ServiceCard({ service, index, inView }) {
       <h3 className="font-sora font-bold text-lg text-[#F0F5F1] mb-2 relative">{service.title}</h3>
       <p className="font-inter text-sm text-[#8A9E8F] leading-relaxed relative mb-4">{service.desc}</p>
 
-      <motion.div
-        className="relative flex items-center gap-1 font-dm text-sm font-medium"
-        style={{ color: service.color }}
-        whileHover={{ x: 4 }}
-        transition={{ duration: 0.2 }}
-      >
-        Ver mais
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </motion.div>
+      {service.hasSlider && <WeightSlider />}
+
+      {!service.hasSlider && (
+        <motion.div
+          className="relative flex items-center gap-1 font-dm text-sm font-medium"
+          style={{ color: service.color }}
+          whileHover={{ x: 4 }}
+          transition={{ duration: 0.2 }}
+        >
+          Ver mais
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
+      )}
     </motion.div>
   )
 }
 
+// ── Section ───────────────────────────────────────────────────────────────────
 export default function Services() {
   const ref = useRef(null)
   const inView = useInView(ref, { amount: 0.1, once: true })
