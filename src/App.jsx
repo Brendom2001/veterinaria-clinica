@@ -2,7 +2,6 @@ import ScrollProgress from './components/ScrollProgress'
 import PawTrail from './components/PawTrail'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Metrics from './components/Metrics'
 import Services from './components/Services'
 import HowItWorks from './components/HowItWorks'
 import MarqueeSection from './components/MarqueeSection'
@@ -21,7 +20,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Metrics />
         <Services />
         <HowItWorks />
         <MarqueeSection />
