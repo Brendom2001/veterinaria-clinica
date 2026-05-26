@@ -29,10 +29,11 @@ function WeightSlider() {
         step={1}
         value={weight}
         onChange={(e) => setWeight(Number(e.target.value))}
-        onPointerDown={(e) => e.stopPropagation()}
         className="weight-slider"
         style={{
           background: `linear-gradient(to right, #2B7FE0 0%, #2B7FE0 ${fillPct}%, #D8E6F7 ${fillPct}%, #D8E6F7 100%)`,
+          touchAction: 'none',
+          pointerEvents: 'auto',
         }}
       />
 
@@ -126,9 +127,11 @@ const services = [
 
 // ── ServiceCard ───────────────────────────────────────────────────────────────
 function ServiceCard({ service, index, inView }) {
+  const [hovered, setHovered] = useState(false)
+
   return (
     <motion.div
-      className="group relative p-6 rounded-2xl bg-white border border-[#D8E6F7] cursor-pointer overflow-hidden"
+      className="relative p-6 rounded-2xl bg-white cursor-pointer overflow-hidden"
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -136,23 +139,29 @@ function ServiceCard({ service, index, inView }) {
         delay: 0.2 + index * 0.08,
         ease: [0.76, 0, 0.24, 1],
       }}
-      whileHover={{
-        scale: 1.03,
-        boxShadow: `0 20px 60px rgba(43,127,224,0.12)`,
-        borderColor: `${service.color}66`,
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        border: `1px solid ${hovered ? `${service.color}66` : '#D8E6F7'}`,
+        transform: hovered ? 'scale(1.03)' : 'scale(1)',
+        boxShadow: hovered ? '0 20px 60px rgba(43,127,224,0.12)' : 'none',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+        className="absolute inset-0 transition-opacity duration-500 rounded-2xl"
         style={{
           background: `radial-gradient(ellipse 60% 40% at 50% 0%, ${service.color}08 0%, transparent 70%)`,
+          opacity: hovered ? 1 : 0,
         }}
       />
 
-      <motion.div
+      <div
         className="relative mb-4"
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.2 }}
+        style={{
+          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          transition: 'transform 0.2s ease',
+        }}
       >
         <div
           className="w-14 h-14 rounded-xl flex items-center justify-center"
@@ -160,7 +169,7 @@ function ServiceCard({ service, index, inView }) {
         >
           {service.icon}
         </div>
-      </motion.div>
+      </div>
 
       <h3 className="font-sora font-bold text-lg text-[#0D1B2A] mb-2 relative">{service.title}</h3>
       <p className="font-inter text-sm text-[#5A7A9A] leading-relaxed relative mb-4">{service.desc}</p>
@@ -168,17 +177,19 @@ function ServiceCard({ service, index, inView }) {
       {service.hasSlider && <WeightSlider />}
 
       {!service.hasSlider && (
-        <motion.div
+        <div
           className="relative flex items-center gap-1 font-dm text-sm font-medium"
-          style={{ color: service.color }}
-          whileHover={{ x: 4 }}
-          transition={{ duration: 0.2 }}
+          style={{
+            color: service.color,
+            transform: hovered ? 'translateX(4px)' : 'translateX(0)',
+            transition: 'transform 0.2s ease',
+          }}
         >
           Ver mais
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-        </motion.div>
+        </div>
       )}
     </motion.div>
   )
