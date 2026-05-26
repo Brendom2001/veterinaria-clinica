@@ -1,4 +1,5 @@
 import ScrollProgress from './components/ScrollProgress'
+import PawTrail from './components/PawTrail'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Metrics from './components/Metrics'
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <>
       <ScrollProgress />
+      <PawTrail />
       <Navbar />
       <main>
         <Hero />

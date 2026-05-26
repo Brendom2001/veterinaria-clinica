@@ -15,7 +15,10 @@
       "PowerShell(Get-NetTCPConnection -LocalPort 5174 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalPort, OwningProcess | ForEach-Object { Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue | Select-Object Id, Name, MainWindowTitle })",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5190)",
       "Bash(curl -s http://localhost:5190)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(node test-animations.mjs)",
+      "Bash(rm \"c:/Users/Pichau/atlas-pet/test-animations.mjs\")",
+      "Bash(rm -rf \"c:/Users/Pichau/atlas-pet/screenshots-anim\")"
     ]
   }
 }
