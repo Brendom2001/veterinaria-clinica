@@ -21,7 +21,7 @@ const PAW_CONFIG = Array.from({ length: 12 }, (_, i) => ({
 function PawPrint({ paw, scrollYProgress }) {
   const lo = Math.max(0, paw.threshold - 0.04)
   const hi = paw.threshold
-  const opacity = useTransform(scrollYProgress, [lo, hi], [0, 0.3])
+  const opacity = useTransform(scrollYProgress, [lo, hi], [0, 0.20])
   const scale = useTransform(scrollYProgress, [lo, hi], [0.5, 1])
 
   return (
@@ -30,7 +30,7 @@ function PawPrint({ paw, scrollYProgress }) {
       style={{
         left: paw.left,
         top: `${paw.top}vh`,
-        color: '#4CAF7D',
+        color: '#2B7FE0',
         opacity,
         scale,
         rotate: paw.rotate,

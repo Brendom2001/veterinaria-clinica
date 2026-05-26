@@ -8,11 +8,11 @@ const steps = [
     desc: 'Banho, tosa, consulta, hotel ou adestramento — selecione o que seu pet precisa.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="4" width="20" height="20" rx="4" stroke="#4CAF7D" strokeWidth="1.5" fill="none"/>
-        <path d="M9 14l3 3 7-7" stroke="#4CAF7D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect x="4" y="4" width="20" height="20" rx="4" stroke="#2B7FE0" strokeWidth="1.5" fill="none"/>
+        <path d="M9 14l3 3 7-7" stroke="#2B7FE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
-    color: '#4CAF7D',
+    color: '#2B7FE0',
   },
   {
     number: '02',
@@ -20,15 +20,15 @@ const steps = [
     desc: 'Mande uma mensagem, escolha o dia e horário que funcionam pra você em segundos.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="5" width="20" height="18" rx="3" stroke="#F5C842" strokeWidth="1.5" fill="none"/>
-        <path d="M4 10h20" stroke="#F5C842" strokeWidth="1.5"/>
-        <circle cx="9" cy="16" r="1.5" fill="#F5C842"/>
-        <circle cx="14" cy="16" r="1.5" fill="#F5C842"/>
-        <circle cx="19" cy="16" r="1.5" fill="#F5C842"/>
-        <path d="M8 7V4M20 7V4" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round"/>
+        <rect x="4" y="5" width="20" height="18" rx="3" stroke="#FF9F43" strokeWidth="1.5" fill="none"/>
+        <path d="M4 10h20" stroke="#FF9F43" strokeWidth="1.5"/>
+        <circle cx="9" cy="16" r="1.5" fill="#FF9F43"/>
+        <circle cx="14" cy="16" r="1.5" fill="#FF9F43"/>
+        <circle cx="19" cy="16" r="1.5" fill="#FF9F43"/>
+        <path d="M8 7V4M20 7V4" stroke="#FF9F43" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
-    color: '#F5C842',
+    color: '#FF9F43',
   },
   {
     number: '03',
@@ -36,22 +36,22 @@ const steps = [
     desc: 'Apareça no horário marcado. Nós cuidamos de tudo — você só precisa buscar um pet feliz.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 4C9.58 4 6 7.58 6 12c0 3.31 1.92 6.18 4.72 7.6L14 24l3.28-4.4C20.08 18.18 22 15.31 22 12c0-4.42-3.58-8-8-8z" stroke="#6FCFA0" strokeWidth="1.5" fill="none"/>
-        <circle cx="14" cy="12" r="3" fill="#6FCFA0" opacity="0.4"/>
-        <circle cx="14" cy="12" r="1.5" fill="#6FCFA0"/>
+        <path d="M14 4C9.58 4 6 7.58 6 12c0 3.31 1.92 6.18 4.72 7.6L14 24l3.28-4.4C20.08 18.18 22 15.31 22 12c0-4.42-3.58-8-8-8z" stroke="#2B7FE0" strokeWidth="1.5" fill="none"/>
+        <circle cx="14" cy="12" r="3" fill="#2B7FE0" opacity="0.4"/>
+        <circle cx="14" cy="12" r="1.5" fill="#2B7FE0"/>
       </svg>
     ),
-    color: '#6FCFA0',
+    color: '#2B7FE0',
   },
 ]
 
 function ConnectorLine({ inView, delay }) {
   return (
     <div className="hidden md:flex flex-1 items-center px-2 mt-[-2px]">
-      <div className="relative w-full h-px bg-[#2A3D2F] overflow-hidden rounded-full">
+      <div className="relative w-full h-px bg-[#D8E6F7] overflow-hidden rounded-full">
         <motion.div
           className="absolute inset-0 h-px rounded-full"
-          style={{ background: 'linear-gradient(90deg, #4CAF7D, #F5C842)' }}
+          style={{ background: 'linear-gradient(90deg, #2B7FE0, #FF9F43)' }}
           initial={{ scaleX: 0, originX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 0.8, delay, ease: [0.76, 0, 0.24, 1] }}
@@ -66,7 +66,7 @@ export default function HowItWorks() {
   const inView = useInView(ref, { amount: 0.15, once: true })
 
   return (
-    <section ref={ref} className="py-24 px-6 bg-[#132018]">
+    <section ref={ref} className="py-24 px-6 bg-[#F0F5FC]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -74,13 +74,12 @@ export default function HowItWorks() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
-          <span className="font-dm text-xs text-[#4CAF7D] uppercase tracking-widest mb-3 block">Simples assim</span>
-          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#F0F5F1]">
-            Como <span className="text-[#4CAF7D]">funciona</span>
+          <span className="font-dm text-xs text-[#2B7FE0] uppercase tracking-widest mb-3 block">Simples assim</span>
+          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#0D1B2A]">
+            Como <span className="text-[#2B7FE0]">funciona</span>
           </h2>
         </motion.div>
 
-        {/* Steps row */}
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0">
           {steps.map((step, i) => (
             <Fragment key={step.number}>
@@ -96,7 +95,6 @@ export default function HowItWorks() {
                   damping: 28,
                 }}
               >
-                {/* Number badge */}
                 <div className="relative">
                   <motion.div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center"
@@ -110,7 +108,7 @@ export default function HowItWorks() {
                     {step.icon}
                   </motion.div>
                   <div
-                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center font-sora font-bold text-[10px] text-[#0F1A14]"
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center font-sora font-bold text-[10px] text-white"
                     style={{ background: step.color }}
                   >
                     {i + 1}
@@ -118,8 +116,8 @@ export default function HowItWorks() {
                 </div>
 
                 <div>
-                  <h3 className="font-sora font-bold text-lg text-[#F0F5F1] mb-2">{step.title}</h3>
-                  <p className="font-inter text-sm text-[#8A9E8F] leading-relaxed max-w-[200px] mx-auto">
+                  <h3 className="font-sora font-bold text-lg text-[#0D1B2A] mb-2">{step.title}</h3>
+                  <p className="font-inter text-sm text-[#5A7A9A] leading-relaxed max-w-[200px] mx-auto">
                     {step.desc}
                   </p>
                 </div>
@@ -132,16 +130,15 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Bottom CTA hint */}
         <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.9 }}
         >
-          <p className="font-dm text-sm text-[#8A9E8F]">
+          <p className="font-dm text-sm text-[#5A7A9A]">
             Tempo médio de agendamento:{' '}
-            <span className="text-[#4CAF7D] font-medium">menos de 2 minutos</span>
+            <span className="text-[#2B7FE0] font-medium">menos de 2 minutos</span>
           </p>
         </motion.div>
       </div>

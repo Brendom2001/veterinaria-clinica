@@ -4,16 +4,14 @@ import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate } f
 export default function Navbar() {
   const { scrollY } = useScroll()
   const bgOpacity = useTransform(scrollY, [0, 80], [0, 1])
-  const bg = useMotionTemplate`rgba(15,26,20,${bgOpacity})`
-  const borderClr = useMotionTemplate`rgba(42,61,47,${bgOpacity})`
+  const bg = useMotionTemplate`rgba(250,252,255,${bgOpacity})`
+  const borderClr = useMotionTemplate`rgba(216,230,247,${bgOpacity})`
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const navItems = ['Serviços', 'Diferenciais', 'Depoimentos']
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4"
-    >
+    <motion.header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4">
       <motion.div
         className="absolute inset-0 border-b"
         style={{
@@ -30,16 +28,16 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div className="w-8 h-8 rounded-lg bg-[#4CAF7D] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-[#2B7FE0] flex items-center justify-center">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C8 2 4 5.5 4 10c0 3 1.5 5.5 4 7l4 3 4-3c2.5-1.5 4-4 4-7 0-4.5-4-8-8-8z" fill="#0F1A14"/>
-              <circle cx="9" cy="9" r="1.5" fill="#0F1A14"/>
-              <circle cx="15" cy="9" r="1.5" fill="#0F1A14"/>
-              <path d="M9 14s1 2 3 2 3-2 3-2" stroke="#0F1A14" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M12 2C8 2 4 5.5 4 10c0 3 1.5 5.5 4 7l4 3 4-3c2.5-1.5 4-4 4-7 0-4.5-4-8-8-8z" fill="white"/>
+              <circle cx="9" cy="9" r="1.5" fill="white"/>
+              <circle cx="15" cy="9" r="1.5" fill="white"/>
+              <path d="M9 14s1 2 3 2 3-2 3-2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </div>
-          <span className="font-sora font-extrabold text-lg text-[#F0F5F1] tracking-tight">
-            Atlas <span className="text-[#4CAF7D]">Pet</span>
+          <span className="font-sora font-extrabold text-lg text-[#0D1B2A] tracking-tight">
+            Atlas <span className="text-[#2B7FE0]">Pet</span>
           </span>
         </motion.div>
 
@@ -53,7 +51,7 @@ export default function Navbar() {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="font-dm text-sm text-[#8A9E8F] hover:text-[#F0F5F1] transition-colors duration-200"
+              className="font-dm text-sm text-[#0D1B2A] hover:text-[#2B7FE0] transition-colors duration-200"
             >
               {item}
             </a>
@@ -63,7 +61,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <motion.a
             href="#cta"
-            className="font-dm text-sm font-medium bg-[#4CAF7D] text-[#0F1A14] px-5 py-2 rounded-full hover:bg-[#6FCFA0] transition-colors duration-200"
+            className="font-dm text-sm font-medium bg-[#2B7FE0] text-white px-5 py-2 rounded-full hover:bg-[#1A6BC9] transition-colors duration-200"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
@@ -77,17 +75,17 @@ export default function Navbar() {
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             <motion.span
-              className="block w-5 h-0.5 bg-[#F0F5F1] rounded-full"
+              className="block w-5 h-0.5 bg-[#0D1B2A] rounded-full"
               animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
             <motion.span
-              className="block w-5 h-0.5 bg-[#F0F5F1] rounded-full"
+              className="block w-5 h-0.5 bg-[#0D1B2A] rounded-full"
               animate={{ opacity: mobileOpen ? 0 : 1 }}
               transition={{ duration: 0.15 }}
             />
             <motion.span
-              className="block w-5 h-0.5 bg-[#F0F5F1] rounded-full"
+              className="block w-5 h-0.5 bg-[#0D1B2A] rounded-full"
               animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
@@ -98,7 +96,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="md:hidden absolute left-0 right-0 top-full border-b border-[#2A3D2F] bg-[#0F1A14]/95 px-6 py-4"
+            className="md:hidden absolute left-0 right-0 top-full border-b border-[#D8E6F7] bg-[#FAFCFF]/95 px-6 py-4"
             style={{ backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,7 +109,7 @@ export default function Navbar() {
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setMobileOpen(false)}
-                  className="font-dm text-sm text-[#8A9E8F] hover:text-[#F0F5F1] transition-colors duration-200 py-2"
+                  className="font-dm text-sm text-[#0D1B2A] hover:text-[#2B7FE0] transition-colors duration-200 py-2"
                 >
                   {item}
                 </a>

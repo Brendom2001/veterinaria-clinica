@@ -34,10 +34,10 @@ function MetricItem({ metric, started }) {
   const display = metric.isDecimal ? (count / 10).toFixed(1) : count.toLocaleString('pt-BR')
   return (
     <div className="flex flex-col items-center gap-1 px-4 py-5 text-center">
-      <span className="font-sora font-extrabold text-2xl md:text-3xl text-[#F0F5F1]">
+      <span className="font-sora font-extrabold text-2xl md:text-3xl text-[#0D1B2A]">
         {display}{metric.suffix}
       </span>
-      <span className="font-dm text-xs text-[#8A9E8F] leading-snug">{metric.label}</span>
+      <span className="font-dm text-xs text-[#5A7A9A] leading-snug">{metric.label}</span>
     </div>
   )
 }
@@ -54,9 +54,9 @@ const PawSVG = ({ size = 28 }) => (
 )
 
 const FLOATING_PAWS = [
-  { top: '18%', left: '7%', duration: 3.5, delay: 0, rotate: -20 },
-  { top: '22%', right: '8%', duration: 4.0, delay: 1.3, rotate: 15 },
-  { top: '65%', left: '4%', duration: 4.5, delay: 2.6, rotate: -10 },
+  { top: '18%', left: '7%', duration: 3.5, delay: 0, rotate: -20, color: '#2B7FE0' },
+  { top: '22%', right: '8%', duration: 4.0, delay: 1.3, rotate: 15, color: '#FF9F43' },
+  { top: '65%', left: '4%', duration: 4.5, delay: 2.6, rotate: -10, color: '#2B7FE0' },
 ]
 
 // ── DogCtaIcon ────────────────────────────────────────────────────────────────
@@ -67,9 +67,9 @@ function DogCtaIcon({ isHovered }) {
         <ellipse cx="7" cy="5" rx="4" ry="5.5" transform="rotate(-25 7 5)" />
         <ellipse cx="21" cy="5" rx="4" ry="5.5" transform="rotate(25 21 5)" />
         <circle cx="14" cy="14" r="9" />
-        <circle cx="11" cy="13" r="1.4" fill="#0F1A14" />
-        <circle cx="17" cy="13" r="1.4" fill="#0F1A14" />
-        <ellipse cx="14" cy="17" rx="2" ry="1.3" fill="#0F1A14" />
+        <circle cx="11" cy="13" r="1.4" fill="#0D1B2A" />
+        <circle cx="17" cy="13" r="1.4" fill="#0D1B2A" />
+        <ellipse cx="14" cy="17" rx="2" ry="1.3" fill="#0D1B2A" />
       </svg>
       <motion.span
         className="absolute inline-block"
@@ -94,10 +94,10 @@ function TrailPaw({ id, x, y, rotate, onDone }) {
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-50 text-[#4CAF7D]"
+      className="pointer-events-none fixed z-50 text-[#2B7FE0]"
       style={{ left: x - 14, top: y - 14, rotate }}
       initial={{ scale: 0.5, opacity: 0 }}
-      animate={{ scale: 1, opacity: 0.18 }}
+      animate={{ scale: 1, opacity: 0.20 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
     >
@@ -141,7 +141,7 @@ export default function Hero() {
 
   const titleLines = [
     [{ text: 'Tudo que seu pet' }],
-    [{ text: 'merece,', color: '#4CAF7D' }, { text: ' em um só lugar.' }],
+    [{ text: 'merece,', color: '#2B7FE0' }, { text: ' em um só lugar.' }],
   ]
 
   return (
@@ -159,17 +159,17 @@ export default function Hero() {
 
       {/* Parallax background */}
       <motion.div className="absolute inset-0 -z-10" style={{ y: bgY }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1A14] via-[#132018] to-[#0a1209]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FAFCFF] via-[#F0F5FC] to-[#EBF3FF]" />
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-60"
           style={{
-            backgroundImage: `radial-gradient(ellipse 80% 60% at 50% 0%, rgba(76,175,125,0.18) 0%, transparent 70%)`,
+            backgroundImage: `radial-gradient(ellipse 80% 60% at 50% 0%, rgba(43,127,224,0.08) 0%, transparent 70%)`,
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
-            backgroundImage: `linear-gradient(rgba(76,175,125,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(76,175,125,0.8) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(43,127,224,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(43,127,224,0.4) 1px, transparent 1px)`,
             backgroundSize: '48px 48px',
           }}
         />
@@ -179,18 +179,18 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 60%, rgba(76,175,125,0.07) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 60%, rgba(43,127,224,0.06) 0%, transparent 70%)' }}
         />
       </div>
 
       {/* Floating paw prints */}
       {FLOATING_PAWS.map((pos, i) => {
-        const { duration, delay, rotate, ...style } = pos
+        const { duration, delay, rotate, color, ...style } = pos
         return (
           <motion.div
             key={i}
-            className="absolute hidden md:block text-[#4CAF7D]"
-            style={{ ...style, opacity: 0.12, rotate }}
+            className="absolute hidden md:block"
+            style={{ ...style, opacity: 0.12, rotate, color }}
             animate={{ y: [0, -16, 0], rotate: [rotate - 10, rotate + 5, rotate - 10] }}
             transition={{ duration, delay, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -205,8 +205,8 @@ export default function Hero() {
         <motion.div
           className="inline-flex items-center gap-2 mb-6 px-4 py-1.5"
           style={{
-            background: 'rgba(76,175,125,0.15)',
-            border: '1px solid rgba(76,175,125,0.3)',
+            background: 'rgba(43,127,224,0.10)',
+            border: '1px solid rgba(43,127,224,0.25)',
             borderRadius: 100,
           }}
           initial={{ opacity: 0, y: 20 }}
@@ -214,17 +214,17 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
         >
           <motion.span
-            className="w-2 h-2 rounded-full bg-[#4CAF7D] block"
+            className="w-2 h-2 rounded-full bg-[#2B7FE0] block"
             animate={{ scale: [1, 0.8, 1], opacity: [1, 0.5, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
-          <span className="font-dm text-xs text-[#8A9E8F] uppercase tracking-widest">
+          <span className="font-dm text-xs text-[#2B7FE0] uppercase tracking-widest">
             Aberto agora · Sapiranga/RS
           </span>
         </motion.div>
 
         {/* Title */}
-        <h1 className="font-sora font-extrabold text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-[#F0F5F1] mb-6">
+        <h1 className="font-sora font-extrabold text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-[#0D1B2A] mb-6">
           {titleLines.map((line, i) => (
             <div key={i} className="overflow-hidden py-1 -my-1">
               <motion.div
@@ -248,7 +248,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          className="font-inter text-base md:text-lg text-[#8A9E8F] mb-10"
+          className="font-inter text-base md:text-lg text-[#5A7A9A] mb-10"
           style={{ maxWidth: 420 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -273,7 +273,7 @@ export default function Hero() {
           >
             <MagneticButton
               href="#servicos"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-[#4CAF7D] text-[#0F1A14] font-sora font-bold text-base hover:bg-[#6FCFA0] transition-colors duration-300 shadow-[0_0_32px_rgba(76,175,125,0.3)] hover:shadow-[0_0_48px_rgba(76,175,125,0.5)]"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-[#2B7FE0] text-white font-sora font-bold text-base hover:bg-[#1A6BC9] transition-colors duration-300 shadow-[0_0_32px_rgba(43,127,224,0.3)] hover:shadow-[0_0_48px_rgba(43,127,224,0.5)]"
               style={{ borderRadius: 100 }}
             >
               <DogCtaIcon isHovered={ctaHovered} />
@@ -287,14 +287,14 @@ export default function Hero() {
           {/* Secondary */}
           <a
             href="#servicos"
-            className="inline-flex items-center gap-2 px-8 py-4 font-sora font-semibold text-base text-[#8A9E8F] hover:text-[#F0F5F1] transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-8 py-4 font-sora font-semibold text-base text-[#5A7A9A] hover:text-[#0D1B2A] transition-colors duration-200"
             style={{
               borderRadius: 100,
-              border: '1px solid rgba(138,158,143,0.3)',
+              border: '1px solid rgba(90,122,154,0.3)',
             }}
           >
             Ver serviços
-            <span className="text-[#4CAF7D]">↓</span>
+            <span className="text-[#2B7FE0]">↓</span>
           </a>
         </motion.div>
 
@@ -305,13 +305,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ borderTop: '1px solid rgba(13,27,42,0.08)' }}
         >
           <div className="grid grid-cols-2 md:grid-cols-4">
             {METRICS.map((metric, i) => (
               <div
                 key={i}
-                style={i > 0 ? { borderLeft: '1px solid rgba(255,255,255,0.06)' } : {}}
+                style={i > 0 ? { borderLeft: '1px solid rgba(13,27,42,0.08)' } : {}}
               >
                 <MetricItem metric={metric} started={metricsInView} />
               </div>
@@ -327,13 +327,13 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.8 }}
       >
-        <span className="font-dm text-xs text-[#8A9E8F]/50 uppercase tracking-widest">scroll</span>
+        <span className="font-dm text-xs text-[#5A7A9A]/50 uppercase tracking-widest">scroll</span>
         <motion.div
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 3v10M4 9l4 4 4-4" stroke="#4CAF7D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="#2B7FE0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
           </svg>
         </motion.div>
       </motion.div>

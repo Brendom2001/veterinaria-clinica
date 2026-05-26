@@ -2,22 +2,22 @@ import { motion } from 'framer-motion'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a1209] border-t border-[#2A3D2F] px-6 py-12">
+    <footer className="bg-[#0D1B2A] border-t border-white/10 px-6 py-12">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#4CAF7D] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#2B7FE0] flex items-center justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C8 2 4 5.5 4 10c0 3 1.5 5.5 4 7l4 3 4-3c2.5-1.5 4-4 4-7 0-4.5-4-8-8-8z" fill="#0F1A14"/>
-                <circle cx="9" cy="9" r="1.5" fill="#0F1A14"/>
-                <circle cx="15" cy="9" r="1.5" fill="#0F1A14"/>
-                <path d="M9 14s1 2 3 2 3-2 3-2" stroke="#0F1A14" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M12 2C8 2 4 5.5 4 10c0 3 1.5 5.5 4 7l4 3 4-3c2.5-1.5 4-4 4-7 0-4.5-4-8-8-8z" fill="white"/>
+                <circle cx="9" cy="9" r="1.5" fill="white"/>
+                <circle cx="15" cy="9" r="1.5" fill="white"/>
+                <path d="M9 14s1 2 3 2 3-2 3-2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </div>
             <div>
-              <span className="font-sora font-extrabold text-xl text-[#F0F5F1] block">Atlas <span className="text-[#4CAF7D]">Pet</span></span>
-              <span className="font-dm text-xs text-[#8A9E8F]">Premium Petshop · Sapiranga</span>
+              <span className="font-sora font-extrabold text-xl text-white block">Atlas <span className="text-[#2B7FE0]">Pet</span></span>
+              <span className="font-dm text-xs text-white/50">Premium Petshop · Sapiranga</span>
             </div>
           </div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-dm text-sm text-[#8A9E8F] hover:text-[#4CAF7D] transition-colors duration-200"
+                className="font-dm text-sm text-white/70 hover:text-[#2B7FE0] transition-colors duration-200"
               >
                 {item.label}
               </a>
@@ -45,7 +45,7 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-xl bg-[#1A2B1F] border border-[#2A3D2F] flex items-center justify-center text-[#8A9E8F] hover:text-[#4CAF7D] hover:border-[#4CAF7D]/40 transition-all duration-200"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#FF9F43] hover:border-[#FF9F43]/40 transition-all duration-200"
               aria-label="Instagram"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -58,7 +58,7 @@ export default function Footer() {
               href="https://wa.me/5551999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-xl bg-[#1A2B1F] border border-[#2A3D2F] flex items-center justify-center text-[#8A9E8F] hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-200"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-200"
               aria-label="WhatsApp"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -69,11 +69,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-[#2A3D2F] pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="font-inter text-xs text-[#8A9E8F]/60">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="font-inter text-xs text-white/40">
             © 2024 Atlas Pet. Todos os direitos reservados.
           </p>
-          <p className="font-dm text-xs text-[#8A9E8F]/60">
+          <p className="font-dm text-xs text-white/40">
             Feito com ❤️ para os pets de Sapiranga
           </p>
         </div>

@@ -5,50 +5,50 @@ const photos = [
   {
     label: 'Thor após tosa',
     breed: 'Golden Retriever',
-    gradient: 'linear-gradient(135deg, #1e3a2a 0%, #2d5c3a 50%, #4CAF7D22 100%)',
+    gradient: 'linear-gradient(135deg, #EBF3FF 0%, #C8DFFE 50%, #2B7FE011 100%)',
     span: 'row-span-2',
     tag: 'Tosa',
-    tagColor: '#4CAF7D',
+    tagColor: '#2B7FE0',
   },
   {
     label: 'Luna dormindo',
     breed: 'Gata Siamesa',
-    gradient: 'linear-gradient(135deg, #2a2010 0%, #4a3820 50%, #F5C84222 100%)',
+    gradient: 'linear-gradient(135deg, #FFF5EB 0%, #FFE0B2 50%, #FF9F4311 100%)',
     span: '',
     tag: 'Hotel',
-    tagColor: '#F5C842',
+    tagColor: '#FF9F43',
   },
   {
     label: 'Max no banho',
     breed: 'Labrador Preto',
-    gradient: 'linear-gradient(135deg, #1a1f2a 0%, #2a3045 50%, #6FCFA022 100%)',
+    gradient: 'linear-gradient(135deg, #EBF3FF 0%, #C8DFFE 50%, #2B7FE011 100%)',
     span: '',
     tag: 'Banho',
-    tagColor: '#6FCFA0',
+    tagColor: '#2B7FE0',
   },
   {
     label: 'Mel após consulta',
     breed: 'Shih-Tzu',
-    gradient: 'linear-gradient(135deg, #2a1a28 0%, #3d2040 50%, #c084fc22 100%)',
+    gradient: 'linear-gradient(135deg, #FFF5EB 0%, #FFE0B2 50%, #FF9F4311 100%)',
     span: '',
     tag: 'Veterinário',
-    tagColor: '#c084fc',
+    tagColor: '#FF9F43',
   },
   {
     label: 'Bob em treino',
     breed: 'Border Collie',
-    gradient: 'linear-gradient(135deg, #0f2a1e 0%, #1a4530 50%, #4CAF7D33 100%)',
+    gradient: 'linear-gradient(135deg, #EBF3FF 0%, #CDDFF9 50%, #2B7FE022 100%)',
     span: 'row-span-2',
     tag: 'Adestramento',
-    tagColor: '#4CAF7D',
+    tagColor: '#2B7FE0',
   },
   {
     label: 'Bilu pós-banho',
     breed: 'Poodle Toy',
-    gradient: 'linear-gradient(135deg, #2a1510 0%, #4a2820 50%, #fb923c22 100%)',
+    gradient: 'linear-gradient(135deg, #FFF5EB 0%, #FFE0B2 50%, #FF9F4322 100%)',
     span: '',
     tag: 'Banho',
-    tagColor: '#fb923c',
+    tagColor: '#FF9F43',
   },
 ]
 
@@ -72,7 +72,6 @@ function PhotoCard({ photo, index, inView }) {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      {/* Subtle noise texture overlay */}
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -80,10 +79,9 @@ function PhotoCard({ photo, index, inView }) {
         }}
       />
 
-      {/* Pet icon placeholder */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
-          animate={hovered ? { scale: 1.1, opacity: 0.5 } : { scale: 1, opacity: 0.2 }}
+          animate={hovered ? { scale: 1.1, opacity: 0.4 } : { scale: 1, opacity: 0.18 }}
           transition={{ duration: 0.3 }}
         >
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
@@ -96,21 +94,18 @@ function PhotoCard({ photo, index, inView }) {
         </motion.div>
       </div>
 
-      {/* Bottom info overlay */}
       <AnimatePresence>
         {hovered && (
           <motion.div
             className="absolute inset-0 flex flex-col justify-end p-4"
-            style={{
-              background: `linear-gradient(to top, ${photo.tagColor}33 0%, transparent 60%)`,
-            }}
+            style={{ background: 'rgba(43,127,224,0.85)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
             <motion.p
-              className="font-sora font-bold text-sm text-[#F0F5F1]"
+              className="font-sora font-bold text-sm text-white"
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.05 }}
@@ -118,7 +113,7 @@ function PhotoCard({ photo, index, inView }) {
               {photo.label}
             </motion.p>
             <motion.p
-              className="font-dm text-xs text-[#F0F5F1]/70"
+              className="font-dm text-xs text-white/70"
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.08 }}
@@ -129,7 +124,6 @@ function PhotoCard({ photo, index, inView }) {
         )}
       </AnimatePresence>
 
-      {/* Tag badge */}
       <div
         className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-dm font-medium uppercase tracking-wide"
         style={{
@@ -150,7 +144,7 @@ export default function Gallery() {
   const inView = useInView(ref, { amount: 0.1, once: true })
 
   return (
-    <section ref={ref} className="py-24 px-6 bg-[#0F1A14]">
+    <section ref={ref} className="py-24 px-6 bg-[#FAFCFF]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           className="text-center mb-14"
@@ -158,26 +152,24 @@ export default function Gallery() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
-          <span className="font-dm text-xs text-[#4CAF7D] uppercase tracking-widest mb-3 block">Nossos Pets</span>
-          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#F0F5F1]">
+          <span className="font-dm text-xs text-[#2B7FE0] uppercase tracking-widest mb-3 block">Nossos Pets</span>
+          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#0D1B2A]">
             Cada pet tem<br />
-            <span className="text-[#F5C842]">sua própria história.</span>
+            <span className="text-[#FF9F43]">sua própria história.</span>
           </h2>
-          <p className="font-inter text-sm text-[#8A9E8F] mt-4 max-w-md mx-auto">
+          <p className="font-inter text-sm text-[#5A7A9A] mt-4 max-w-md mx-auto">
             Momentos reais de cuidado, carinho e transformação. Veja alguns dos nossos clientes favoritos.
           </p>
         </motion.div>
 
-        {/* Masonry grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[160px]">
           {photos.map((photo, i) => (
             <PhotoCard key={i} photo={photo} index={i} inView={inView} />
           ))}
         </div>
 
-        {/* Bottom note */}
         <motion.p
-          className="text-center font-dm text-xs text-[#8A9E8F]/50 mt-6"
+          className="text-center font-dm text-xs text-[#5A7A9A]/50 mt-6"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}

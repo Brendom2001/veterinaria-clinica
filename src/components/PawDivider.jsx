@@ -1,8 +1,10 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const PawSVG = () => (
-  <svg width="22" height="22" viewBox="0 0 28 28" fill="#4CAF7D">
+const COLORS = ['#2B7FE0', '#FF9F43']
+
+const PawSVG = ({ color }) => (
+  <svg width="22" height="22" viewBox="0 0 28 28" fill={color}>
     <ellipse cx="14" cy="20" rx="7" ry="8" />
     <circle cx="6" cy="11" r="3.5" />
     <circle cx="11" cy="7" r="3.5" />
@@ -43,7 +45,7 @@ export default function PawDivider() {
               ease: 'easeInOut',
             }}
           >
-            <PawSVG />
+            <PawSVG color={COLORS[i % 2]} />
           </motion.div>
         </motion.div>
       ))}

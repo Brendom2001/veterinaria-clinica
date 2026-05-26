@@ -33,7 +33,7 @@ function FAQItem({ item, index, inView }) {
 
   return (
     <motion.div
-      className="border border-[#2A3D2F] rounded-2xl overflow-hidden bg-[#1A2B1F]"
+      className="border border-[#D8E6F7] rounded-2xl overflow-hidden bg-white"
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -44,7 +44,7 @@ function FAQItem({ item, index, inView }) {
         damping: 28,
       }}
       style={{
-        borderColor: open ? 'rgba(76,175,125,0.35)' : undefined,
+        borderColor: open ? 'rgba(43,127,224,0.35)' : undefined,
         transition: 'border-color 0.3s ease',
       }}
     >
@@ -52,18 +52,18 @@ function FAQItem({ item, index, inView }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
       >
-        <span className="font-dm font-medium text-[15px] text-[#F0F5F1]">{item.q}</span>
+        <span className="font-dm font-medium text-[15px] text-[#0D1B2A]">{item.q}</span>
         <motion.div
           className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
           style={{
-            background: open ? '#4CAF7D22' : '#2A3D2F44',
-            border: open ? '1px solid #4CAF7D55' : '1px solid #2A3D2F',
+            background: open ? '#2B7FE022' : '#D8E6F744',
+            border: open ? '1px solid #2B7FE055' : '1px solid #D8E6F7',
           }}
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M7 2v10M2 7h10" stroke={open ? '#4CAF7D' : '#8A9E8F'} strokeWidth="2" strokeLinecap="round"/>
+            <path d="M7 2v10M2 7h10" stroke={open ? '#2B7FE0' : '#5A7A9A'} strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </motion.div>
       </button>
@@ -78,8 +78,8 @@ function FAQItem({ item, index, inView }) {
             style={{ overflow: 'hidden' }}
           >
             <div className="px-6 pb-5">
-              <div className="h-px bg-[#2A3D2F] mb-4" />
-              <p className="font-inter text-sm text-[#8A9E8F] leading-relaxed">{item.a}</p>
+              <div className="h-px bg-[#D8E6F7] mb-4" />
+              <p className="font-inter text-sm text-[#5A7A9A] leading-relaxed">{item.a}</p>
             </div>
           </motion.div>
         )}
@@ -93,7 +93,7 @@ export default function FAQ() {
   const inView = useInView(ref, { amount: 0.1, once: true })
 
   return (
-    <section ref={ref} className="py-24 px-6 bg-[#132018]">
+    <section ref={ref} className="py-24 px-6 bg-[#F0F5FC]">
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="text-center mb-14"
@@ -101,9 +101,9 @@ export default function FAQ() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
-          <span className="font-dm text-xs text-[#4CAF7D] uppercase tracking-widest mb-3 block">Dúvidas frequentes</span>
-          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#F0F5F1]">
-            Perguntas <span className="text-[#4CAF7D]">frequentes</span>
+          <span className="font-dm text-xs text-[#2B7FE0] uppercase tracking-widest mb-3 block">Dúvidas frequentes</span>
+          <h2 className="font-sora font-extrabold text-3xl md:text-5xl text-[#0D1B2A]">
+            Perguntas <span className="text-[#2B7FE0]">frequentes</span>
           </h2>
         </motion.div>
 
@@ -119,11 +119,11 @@ export default function FAQ() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="font-dm text-sm text-[#8A9E8F]">
+          <p className="font-dm text-sm text-[#5A7A9A]">
             Ainda tem dúvidas?{' '}
             <a
               href="https://wa.me/5551999999999"
-              className="text-[#4CAF7D] hover:text-[#6FCFA0] underline underline-offset-2 transition-colors"
+              className="text-[#FF9F43] hover:text-[#e8892e] underline underline-offset-2 transition-colors"
             >
               Fale com a gente pelo WhatsApp
             </a>
