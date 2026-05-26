@@ -29,6 +29,7 @@ function WeightSlider() {
         step={1}
         value={weight}
         onChange={(e) => setWeight(Number(e.target.value))}
+        onPointerDown={(e) => e.stopPropagation()}
         className="weight-slider"
         style={{
           background: `linear-gradient(to right, #2B7FE0 0%, #2B7FE0 ${fillPct}%, #D8E6F7 ${fillPct}%, #D8E6F7 100%)`,
