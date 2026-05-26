@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, Fragment } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const steps = [
@@ -63,7 +63,7 @@ function ConnectorLine({ inView, delay }) {
 
 export default function HowItWorks() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.15, once: true })
+  const inView = useInView(ref, { amount: 0.15, once: true })
 
   return (
     <section ref={ref} className="py-24 px-6 bg-[#132018]">
@@ -83,9 +83,8 @@ export default function HowItWorks() {
         {/* Steps row */}
         <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0">
           {steps.map((step, i) => (
-            <>
+            <Fragment key={step.number}>
               <motion.div
-                key={step.number}
                 className="flex-1 flex flex-col items-center text-center gap-4 px-4"
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -129,7 +128,7 @@ export default function HowItWorks() {
               {i < steps.length - 1 && (
                 <ConnectorLine inView={inView} delay={0.4 + i * 0.18} />
               )}
-            </>
+            </Fragment>
           ))}
         </div>
 

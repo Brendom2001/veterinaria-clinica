@@ -53,7 +53,7 @@ function Stars({ count, inView, delay }) {
 
 export default function Testimonials() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.1, once: true })
+  const inView = useInView(ref, { amount: 0.1, once: true })
 
   return (
     <section id="depoimentos" ref={ref} className="py-24 px-6 bg-[#132018]">

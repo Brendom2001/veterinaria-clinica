@@ -24,7 +24,7 @@ const items = [
 
 export default function Diferenciais() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.15, once: true })
+  const inView = useInView(ref, { amount: 0.15, once: true })
 
   return (
     <section id="diferenciais" ref={ref} className="py-24 px-6 bg-[#0F1A14]">

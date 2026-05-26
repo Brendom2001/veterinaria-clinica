@@ -53,7 +53,7 @@ function MetricCard({ metric, index, started }) {
 
 export default function Metrics() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.15, once: true })
+  const inView = useInView(ref, { amount: 0.15, once: true })
 
   return (
     <section ref={ref} className="py-20 px-6 bg-[#132018]">

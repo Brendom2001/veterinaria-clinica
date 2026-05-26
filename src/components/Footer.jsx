@@ -23,13 +23,18 @@ export default function Footer() {
 
           {/* Links */}
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3">
-            {['Serviços', 'Diferenciais', 'Depoimentos', 'Agendar'].map((item) => (
+            {[
+              { label: 'Serviços', href: '#serviços' },
+              { label: 'Diferenciais', href: '#diferenciais' },
+              { label: 'Depoimentos', href: '#depoimentos' },
+              { label: 'Agendar', href: '#cta' },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="font-dm text-sm text-[#8A9E8F] hover:text-[#4CAF7D] transition-colors duration-200"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>

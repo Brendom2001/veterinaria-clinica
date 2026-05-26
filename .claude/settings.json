@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174)",
+      "Bash(chromium-cli --session atlas-pet-desktop)",
+      "Bash(npx playwright *)",
+      "Bash(node test-screenshots.mjs)",
+      "Bash(npm list *)",
+      "Read(//c/Users/Pichau/AppData/Roaming/npm/node_modules/**)",
+      "Bash(find \"C:/Users/Pichau/AppData/Local/ms-playwright\" -name \"chromium*.exe\" 2>/dev/null | head -3)",
+      "Read(//c/Users/Pichau/AppData/Local/ms-playwright/**)",
+      "Bash(npm install *)",
+      "Bash(curl -s http://localhost:5174)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 5174 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalPort, OwningProcess | ForEach-Object { Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue | Select-Object Id, Name, MainWindowTitle })",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5190)",
+      "Bash(curl -s http://localhost:5190)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

@@ -4,7 +4,7 @@ import MagneticButton from './MagneticButton'
 
 export default function CTAFinal() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.2, once: true })
+  const inView = useInView(ref, { amount: 0.2, once: true })
 
   return (
     <section id="cta" ref={ref} className="relative py-32 px-6 overflow-hidden">

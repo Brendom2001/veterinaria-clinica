@@ -122,7 +122,7 @@ function ServiceCard({ service, index, inView }) {
 
 export default function Services() {
   const ref = useRef(null)
-  const inView = useInView(ref, { threshold: 0.1, once: true })
+  const inView = useInView(ref, { amount: 0.1, once: true })
 
   return (
     <section id="serviços" ref={ref} className="py-24 px-6 bg-[#0F1A14]">
