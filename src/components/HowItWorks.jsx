@@ -81,7 +81,7 @@ export default function HowItWorks() {
         </motion.div>
 
         {/* Steps row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0">
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0">
           {steps.map((step, i) => (
             <Fragment key={step.number}>
               <motion.div
